@@ -108,24 +108,14 @@ li {
   max-width: 1350px;
   width: 94%;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 /*=================================
   main styling starts here
 =================================*/
-
-main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
 .wrapper {
+  margin: 20px auto;
   display: flex;
   justify-content: space-between;
   background-color: #cbe4e1;
@@ -133,9 +123,11 @@ main {
 
 .data {
   width: 65%;
+  box-sizing: border-box;
   padding: 18px 38px;
 }
 
+/* addData styling starts here */
 h1 {
   color: #8f0201;
   font-weight: 800;
@@ -144,6 +136,7 @@ h1 {
 }
 
 .addData {
+  box-sizing: border-box;
   padding: 20px 30px;
   margin-top: 20px;
   background: #fff;
@@ -196,7 +189,9 @@ h2 {
   color: #666;
   font-size: 24px;
 }
+/* addData styling ends here */
 
+/* table styling starts here */
 .list table {
   width: 96%;
   margin: 15px auto 50px auto;
@@ -256,7 +251,9 @@ tr td {
 
 #modify:hover::after { color: #3a5319; } 
 #remove:hover::after { color: #e28282; } 
+/* table styling ends here */
 
+/* clearBtn styling starts here */
 .clear { margin-top: 25px; }
 
 .clear span {
@@ -265,7 +262,9 @@ tr td {
   font-weight: 500;
   font-size: 15px;
 }
+/* clearBtn styling ends here */
 
+/* image styling starts here */
 .image {
   width: 35%;
   margin: auto;
@@ -279,15 +278,92 @@ img {
 }
 
 .none { display: none; }
+/* image styling ends here */
 
 /*=================================
   main styling ends here
 =================================*/
 
 /*media query starts*/
-/*media query for 995px starts here*/
-@media only screen and (max-width: 995px) {
+/*media query for 1024px starts here*/
+@media only screen and (max-width: 1024px) {
+  .data {
+    width: 75%;
+    padding: 20px;
+  }
 
+  .image { width: 25%; }
+}
 
+/*media query for 768px starts here*/
+@media only screen and (max-width: 768px) {
+  .wrapper { flex-direction: column-reverse; }
 
-}  
+  .data,
+  .image {
+    width: 100%;
+    margin-top: 30px;
+  }
+  
+  img { width: 50%; }
+}
+
+/*media query for 540px starts here*/
+@media only screen and (max-width: 540px) {
+  form {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  form div { margin: 10px 0; }
+  #addBtn { margin: 15px 0 0 0; }
+
+  /* remove hover effects */
+  #addBtn:hover,
+  #clear:hover {
+    background: #8dc73f;
+  }
+
+  #modify:hover::after { color: #8dc73f; }
+  #remove:hover::after { color: #e28282; }
+}
+
+/*media query for 320px starts here*/
+@media only screen and (max-width: 320px) {
+  .wrapper { width: 98%; }
+  
+  .data,
+  .addData,
+  .list {
+    width: 100%;
+    padding: 10px;
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  h1 { font-size: 24px; }
+  h2 { font-size: 16px; }
+  .list { padding: 0; }
+
+  .list table {
+    width: 96%;
+    padding: 0;
+    margin: 15px auto 40px auto;
+    border-collapse: collapse;
+  }
+  
+  tr.heading th {
+    padding: 8px;
+    font-size: 14px;
+  }
+  
+  tr td {
+    padding: 10px;
+    border: 1px solid #cfcfcf;
+    font-size: 12px;
+  }
+
+  #modify::after,
+  #remove::after { font-size: 16px; }
+  .clear span { font-size: 14px; }
+}
