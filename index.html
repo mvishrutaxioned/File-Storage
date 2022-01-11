@@ -2,7 +2,7 @@
 <html lang="en"> 
   <head>
     <meta charset="utf-8">
-    <title>Client</title>
+    <title>File Storage</title>
     <meta name="description" lang="en" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="shortcut icon" href="favicon.ico" />
@@ -12,19 +12,30 @@
   <body>
     <!--container start-->
     <div class="container">
-      <!--header section start-->
-      <header>
-      </header>
-      <!--header section ends-->
       <!--main section start-->
       <main>
+        <div class="wrapper">
+          <section class="data">
+            <h1>Enter Items And Quantity</h1>
+            <div class="addData">
+              <form action="#FIXME" method="POST" id="addData">
+                <div>
+                  <label for="item">Item:</label>
+                  <input type="text" name="item" id="item" />
+                </div>
+                <div>
+                  <label for="quanity">Quantity:</label>
+                  <input type="text" name="quanity" id="quanity" />
+                </div>
+                <button type="submit" id="addBtn">Save</button>
+              </form>
+            </div>
+          </section>
+        </div>
       </main>
       <!--main section end-->
-      <!--footer section start-->
-      <footer>      
-      </footer>
-      <!--footer section end-->
     </div>
     <!--container end-->
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
