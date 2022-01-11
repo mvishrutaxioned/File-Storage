@@ -26,6 +26,16 @@ $(document).ready(() => {
     // call displayData function
     displayData()
 
+    // addData functionality
+    function addData(name, value) {
+        data.push({
+            id: Math.floor(Math.random() * 10000),
+            name,
+            value
+        })
+        displayData();
+    }
+
     // displayData function
     function displayData() {
         $('tbody').html('')
