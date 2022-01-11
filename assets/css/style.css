@@ -129,20 +129,11 @@ main {
   display: flex;
   justify-content: space-between;
   background-color: #cbe4e1;
-  border: 1px solid;
 }
 
 .data {
   width: 65%;
   padding: 18px 38px;
-  border: 1px solid;
-}
-
-.image {
-  width: 35%;
-  margin: 0 auto;
-  align-self: center;
-  border: 1px solid;
 }
 
 h1 {
@@ -235,6 +226,13 @@ tr td {
   border: 1px solid #cfcfcf;
 }
 
+.sorry {
+  width: 100%;
+  border: 1px solid #cfcfcf;
+}
+
+.sorry td { border: none; }
+
 #modify,
 #remove { font-size: 0; }
 
@@ -267,6 +265,20 @@ tr td {
   font-weight: 500;
   font-size: 15px;
 }
+
+.image {
+  width: 35%;
+  margin: auto;
+}
+
+img {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.none { display: none; }
 
 /*=================================
   main styling ends here
