@@ -1,4 +1,5 @@
 @charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 /* ==========================================================================
    1. CSS Reset Code
    ========================================================================== */
@@ -82,7 +83,7 @@ sub { bottom: -.25em; }
 /*for all*/
 body {
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 a { 
@@ -105,50 +106,171 @@ li {
 /*for wrapper*/
 .wrapper {
   max-width: 1350px;
-  width: 86%; 
+  width: 94%;
   margin: 0 auto;
 }
-/*=================================
-  Header styling starts here
-=================================*/
-
-
-
-
-
-
-/*=================================
-  Header styling ends here
-=================================*/  
 
 /*=================================
   main styling starts here
 =================================*/
 
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
 
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  background-color: #cbe4e1;
+  border: 1px solid;
+}
 
+.data {
+  width: 65%;
+  padding: 18px 38px;
+  border: 1px solid;
+}
 
+.image {
+  width: 35%;
+  margin: 0 auto;
+  align-self: center;
+  border: 1px solid;
+}
 
+h1 {
+  color: #8f0201;
+  font-weight: 800;
+  font-size: 40px;
+  letter-spacing: 2px;
+}
 
+.addData {
+  padding: 20px 30px;
+  margin-top: 20px;
+  background: #fff;
+}
 
+form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+label {
+  margin-right: 10px;
+  color: #666;
+  font-size: 20px;
+}
+
+input {
+  width: 50%;
+  padding: 8px;
+  border: 1px solid #dfdfdf;
+  outline: none;
+}
+
+#addBtn,
+#clear {
+  padding: 8px 45px;
+  margin-left: auto;
+  border: none;
+  background: #8dc73f;
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+  transition: .5s ease;
+}
+
+#addBtn:hover,
+#clear:hover {
+  background: #6e9c30;
+}
+
+.list {
+  padding: 10px 15px;
+  margin-top: 40px;
+  background: #fff;
+}
+
+h2 {
+  color: #666;
+  font-size: 24px;
+}
+
+.list table {
+  width: 96%;
+  margin: 15px auto 50px auto;
+  border-collapse: collapse;
+}
+
+tr.heading th {
+  padding: 8px 12px;
+  background: #cfcfcf;
+  font-size: 18px;
+}
+
+tr.heading th:first-child,
+tr td:first-child {
+  text-align: left;
+}
+
+tr {
+  width: 100%;
+  text-align: center;
+}
+
+tr td:first-child { width: 45%; }
+
+tr td {
+  padding: 10px;
+  border: 1px solid #cfcfcf;
+}
+
+#modify,
+#remove { font-size: 0; }
+
+#modify::after {
+  content: '\f303';
+  color: #8dc73f;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
+  font-size: 20px;
+  transition: .5s ease;
+}
+
+#remove::after {
+  content: '\f2ed';
+  color: #bd1f1f;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
+  font-size: 20px;
+  transition: .5s ease;
+}
+
+#modify:hover::after { color: #3a5319; } 
+#remove:hover::after { color: #e28282; } 
+
+.clear { margin-top: 25px; }
+
+.clear span {
+  margin-left: 10px;
+  color: #666;
+  font-weight: 500;
+  font-size: 15px;
+}
 
 /*=================================
   main styling ends here
 =================================*/
-
-/*=================================
-  footer styling starts here
-=================================*/ 
-
-
-
-
-
-
-
- /*=================================
-  footer styling ends here
-=================================*/ 
 
 /*media query starts*/
 /*media query for 995px starts here*/
