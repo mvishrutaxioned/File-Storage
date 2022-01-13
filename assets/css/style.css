@@ -243,11 +243,10 @@ tr td {
 }
 
 .sorry {
-  width: 100%;
-  border: 1px solid #cfcfcf;
+  margin-top: 10px;
+  border: none;
+  font-size: 12px;
 }
-
-.sorry td { border: none; }
 
 .modify,
 .remove { font-size: 0; }
