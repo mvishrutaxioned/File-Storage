@@ -9,21 +9,11 @@ $(document).ready(() => {
     let data = JSON.parse(localStorage.getItem('info')) || [];
 
     // form validation functionality
-    function checkName(item) {
-        if(item.length == 0) displayError('Above field is required', 'item')
-        else if (!regexName.test(item) || regexSymbols.test(item)) displayError('Please enter valid name', 'item')
+    function checkForm(elem, str) {
+        if(elem.length == 0) displayError('Above field is required', `${str}`)
+        else if ((str == 'item' ? !regexName.test(elem) : !regexNum.test(elem)) || regexSymbols.test(elem)) displayError(`Please enter valid ${str}`, `${str}`)
         else {
-            displaySuccess('item')
-            return 1
-        }
-    }
-
-    // form validation functionality
-    function checkValue(quantity) {
-        if(quantity.length == 0) displayError('Above field is required', 'quantity')
-        else if (!regexNum.test(quantity) || regexSymbols.test(quantity)) displayError('Please enter valid value', 'quantity')
-        else {
-            displaySuccess('quantity')
+            displaySuccess(`${str}`)
             return 1
         }
     }
@@ -40,16 +30,16 @@ $(document).ready(() => {
         $(`.${e}Err`).hide()
     }
 
-    // checkName on input blur
+    // checkForm on input blur
     $('#item').blur((e) => {
         var item = $('#item').val();
-        checkName(item)
+        checkForm(item, 'item')
     });
 
-    // checkValue on input blur
+    // checkForm on input blur
     $('#quantity').blur((e) => {
         var quantity = $('#quantity').val();
-        checkValue(quantity)
+        checkForm(quantity, 'quantity')
     });
 
     // addData functionality
@@ -145,8 +135,8 @@ $(document).ready(() => {
         var item = $('#item').val();
         var quantity = $('#quantity').val();
 
-        let checkNum1 = checkName(item);
-        let checkNum2 = checkValue(quantity);
+        let checkNum1 = checkForm(item, 'item');
+        let checkNum2 = checkForm(quantity, 'quantity');
 
         if (checkNum1 == 1 && checkNum2 == 1) {
             if(edit.length) {
