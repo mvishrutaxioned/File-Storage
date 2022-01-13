@@ -162,6 +162,26 @@ input {
   outline: none;
 }
 
+.error {
+  display: none;
+  position: absolute;
+  color: #bd1f1f;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+form div { position: relative; }
+
+.itemErr {
+  top: 110%;
+  left: 60px;
+}
+
+.quantityErr {
+  top: 110%;
+  left: 94px;
+}
+
 #addBtn,
 #clear {
   padding: 8px 45px;
@@ -198,13 +218,13 @@ h2 {
   border-collapse: collapse;
 }
 
-tr.heading th {
+.heading th {
   padding: 8px 12px;
   background: #cfcfcf;
   font-size: 18px;
 }
 
-tr.heading th:first-child,
+.heading th:first-child,
 tr td:first-child {
   text-align: left;
 }
@@ -219,19 +239,19 @@ tr td:first-child { width: 45%; }
 tr td {
   padding: 10px;
   border: 1px solid #cfcfcf;
+  color: #666;
 }
 
 .sorry {
-  width: 100%;
-  border: 1px solid #cfcfcf;
+  margin-top: 10px;
+  border: none;
+  font-size: 12px;
 }
 
-.sorry td { border: none; }
+.modify,
+.remove { font-size: 0; }
 
-#modify,
-#remove { font-size: 0; }
-
-#modify::after {
+.modify::after {
   content: '\f303';
   color: #8dc73f;
   font-family: "Font Awesome 5 Free";
@@ -240,7 +260,7 @@ tr td {
   transition: .5s ease;
 }
 
-#remove::after {
+.remove::after {
   content: '\f2ed';
   color: #bd1f1f;
   font-family: "Font Awesome 5 Free";
@@ -249,8 +269,8 @@ tr td {
   transition: .5s ease;
 }
 
-#modify:hover::after { color: #3a5319; } 
-#remove:hover::after { color: #e28282; } 
+.modify:hover::after { color: #3a5319; } 
+.remove:hover::after { color: #e28282; } 
 /* table styling ends here */
 
 /* clearBtn styling starts here */
@@ -318,14 +338,14 @@ img {
   form div { margin: 10px 0; }
   #addBtn { margin: 15px 0 0 0; }
 
-  /* remove hover effects */
+  /*.remove hover effects */
   #addBtn:hover,
   #clear:hover {
     background: #8dc73f;
   }
 
-  #modify:hover::after { color: #8dc73f; }
-  #remove:hover::after { color: #e28282; }
+  .modify:hover::after { color: #8dc73f; }
+  .remove:hover::after { color: #e28282; }
 }
 
 /*media query for 320px starts here*/
@@ -352,7 +372,7 @@ img {
     border-collapse: collapse;
   }
   
-  tr.heading th {
+  .heading th {
     padding: 8px;
     font-size: 14px;
   }
@@ -363,7 +383,7 @@ img {
     font-size: 12px;
   }
 
-  #modify::after,
-  #remove::after { font-size: 16px; }
+  .modify::after,
+  .remove::after { font-size: 16px; }
   .clear span { font-size: 14px; }
 }
