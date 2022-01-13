@@ -16,16 +16,18 @@
       <main>
         <div class="wrapper">
           <section class="data">
-            <h1>Enter Items And Quantity</h1>
+            <h1>Enter Items And Quantity:</h1>
             <div class="addData">
               <form action="#FIXME" method="POST" id="addData">
                 <div>
                   <label for="item">Item:</label>
                   <input type="text" name="item" id="item" />
+                  <span class="error itemErr">Error</span>
                 </div>
                 <div>
                   <label for="quanity">Quantity:</label>
-                  <input type="text" name="quanity" id="quanity" />
+                  <input type="text" name="quanity" id="quantity" />
+                  <span class="error quantityErr">Error</span>
                 </div>
                 <button type="submit" id="addBtn">Save</button>
               </form>
@@ -33,33 +35,36 @@
             <div class="list">
               <h2>Shopping List:</h2>
               <table>
-                <tr class="heading">
-                  <th>Name</th>
-                  <th>Value</th>
-                  <th>Modify</th>
-                  <th>Remove</th>
-                </tr>
-                <tr>
-                  <td>Milk</td>
-                  <td>1</td>
-                  <td><a href="#FIXME" title="Modify" id="modify">Edit</a></td>
-                  <td><a href="#FIXME" title="Remove" id="remove">Del</a></td>
-                </tr>
+                <thead>
+                  <tr class="heading">
+                    <th>Name</th>
+                    <th>Value</th>
+                    <th>Modify</th>
+                    <th>Remove</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="none">
+                    <td>No Records Found!</td>
+                  </tr>
+                </tbody>
               </table>
-              <div class="clear">
-                <a href="#FIXME" title="Clear" id="clear">Clear</a>
-                <span>* Remove all items</span>
-              </div>
+            </div>
+            <div class="clear">
+              <a href="#FIXME" title="Clear" id="clear">Clear</a>
+              <span>* Remove all items</span>
             </div>
           </section>
           <section class="image">
-            <img src="https://via.placeholder.com/400x400" alt="Let's Shop">
+            <img src="https://via.placeholder.com/200x200" alt="Let's Shop">
           </section>
         </div>
       </main>
       <!--main section end-->
     </div>
     <!--container end-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
