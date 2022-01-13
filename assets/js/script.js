@@ -3,35 +3,26 @@ $(document).ready(() => {
     // declaring variables
     let content;
     let edit = [];
-    const regexName = /[^a-zA-z]/g;
-    const regexNum = /[^0-9]/g;
-
+    const regexName = /[a-zA-z]/g;
+    const regexNum = /[0-9]/g;
+    const regexSymbols = /[^a-zA-z0-9]/g;
     let data = JSON.parse(localStorage.getItem('info')) || [];
 
-    // call displayData function
-    displayData()
-
     // form validation functionality
-    function checkName() {
-        var item = $('#item').val();
-        if(item.length == 0) {
-            displayError('Above field is required', 'item')
-        } else if (regexName.test(item)) {
-            displayError('Please enter valid name', 'item')
-        } else {
+    function checkName(item) {
+        if(item.length == 0) displayError('Above field is required', 'item')
+        else if (!regexName.test(item) || regexSymbols.test(item)) displayError('Please enter valid name', 'item')
+        else {
             displaySuccess('item')
             return 1
         }
     }
 
     // form validation functionality
-    function checkValue() {
-        var quantity = $('#quantity').val();
-        if(quantity.length == 0) {
-            displayError('Above field is required', 'quantity')
-        } else if (regexNum.test(quantity)) {
-            displayError('Please enter valid value', 'quantity')
-        } else {
+    function checkValue(quantity) {
+        if(quantity.length == 0) displayError('Above field is required', 'quantity')
+        else if (!regexNum.test(quantity) || regexSymbols.test(quantity)) displayError('Please enter valid value', 'quantity')
+        else {
             displaySuccess('quantity')
             return 1
         }
@@ -63,13 +54,28 @@ $(document).ready(() => {
 
     // addData functionality
     function addData(name, value) {
-        data.push({
-            id: Math.floor(Math.random() * 10000),
-            name,
-            value
-        })
+        if(edit.length) {
+            var obj = {
+                id: Math.floor(Math.random() * 10000),
+                name,
+                value
+            }
+            data.splice(edit[1], 0, obj);
+            localStorage.setItem('info', JSON.stringify(data));
+            edit = [];
+        } else {
+            data.push({
+                id: Math.floor(Math.random() * 10000),
+                name,
+                value
+            })
+            localStorage.setItem('info', JSON.stringify(data));
+        }
         displayData();
     }
+
+    // call displayData function
+    displayData()
 
     // displayData function
     function displayData() {
@@ -89,8 +95,7 @@ $(document).ready(() => {
             }
             $('tbody').html(content);
         } else {
-            $('.sorry').show();
-            console.log('sorry')
+            $('tbody').html('<p class="sorry">No Records Found!</p>');
         }
 
         // delete button functionality
@@ -100,6 +105,7 @@ $(document).ready(() => {
 
                 var myId = $(elem).data('id')
                 $(data).each(function(index, value) { if(value.id == myId) data.splice(index, 1) });
+                localStorage.setItem('info', JSON.stringify(data));
                 displayData();
             })
         })
@@ -114,6 +120,7 @@ $(document).ready(() => {
                     var myId = $(elem).data('id');
                     myData = data.find(e => e.id === myId)
                     $(data).each((index, el) => (el.id == myId ? indexNum = index : ''))
+                    localStorage.setItem('info', JSON.stringify(data));
 
                     edit.push(myId, indexNum);
                     $('#item').val(myData.name);
@@ -123,17 +130,33 @@ $(document).ready(() => {
         })
     }
 
+    // clearBtn functionality
+    $('#clear').click(e => {
+        e.preventDefault;
+        data = [];
+        localStorage.setItem('info', JSON.stringify(data));
+        displayData();
+    })
+
+    // addData functionality
     $('#addData').submit((e) => {
         e.preventDefault();
 
         var item = $('#item').val();
         var quantity = $('#quantity').val();
 
-        if (!item || !quantity) {
-            console.log('not ready')
-        }
-        else if (item && quantity) {
+        let checkNum1 = checkName(item);
+        let checkNum2 = checkValue(quantity);
+
+        if (checkNum1 == 1 && checkNum2 == 1) {
+            if(edit.length) {
+                $(data).each(function(index, value) {
+                    if(value.id == edit[0]) data.splice(index, 1)
+                });
+                localStorage.setItem('info', JSON.stringify(data));
+            }
             addData(item, quantity);
+            $('#addData').trigger('reset');
         }
     })
 
